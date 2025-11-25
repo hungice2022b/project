@@ -1,23 +1,4 @@
-<?php
-session_start();
 
-// ⭐ Nếu chưa có session thì kiểm tra cookie để auto login
-if (!isset($_SESSION['user'])) {
-    if (isset($_COOKIE['logged_user'])) {
-        $_SESSION['user'] = $_COOKIE['logged_user'];
-    } else {
-        header("Location: login.php");
-        exit();
-    }
-}
-
-require_once 'config.php';
-
-// Lấy danh sách người hiến máu
-$stmt = $pdo->query("SELECT * FROM donors");
-$donors = $stmt->fetchAll(PDO::FETCH_ASSOC);
-if (!$donors) $donors = [];
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,3 +53,4 @@ if (!$donors) $donors = [];
     </table>
 </body>
 </html>
+
