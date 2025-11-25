@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +11,9 @@
     <header>
         <h1>Donor Management</h1>
 
-        <button onclick="window.location.href='add_donor.php'">+ Add Donor</button>
+        <button onclick="alert('Add donor only works in PHP version')">+ Add Donor</button>
 
-        <a href="logout.php" class="logout-btn">Logout</a>
+        <a href="#" class="logout-btn" onclick="alert('Logout only works in PHP version')">Logout</a>
     </header>
 
     <table>
@@ -30,27 +29,40 @@
             </tr>
         </thead>
 
-        <tbody>
-            <?php if (empty($donors)): ?>
-                <tr><td colspan="7">No donor data available.</td></tr>
-            <?php else: ?>
-                <?php foreach ($donors as $index => $donor): ?>
-                    <tr>
-                        <td><?= $index + 1 ?></td>
-                        <td><?= htmlspecialchars($donor['code']) ?></td>
-                        <td><?= htmlspecialchars($donor['name']) ?></td>
-                        <td><?= htmlspecialchars($donor['blood_type']) ?></td>
-                        <td><?= htmlspecialchars($donor['phone_number']) ?></td>
-                        <td><?= htmlspecialchars($donor['status']) ?></td>
-                        <td>
-                            <a href="edit_donor.php?id=<?= $donor['id'] ?>">Edit</a> |
-                            <a href="delete_donor.php?id=<?= $donor['id'] ?>" onclick="return confirm('Are you sure to delete this donor?')">Delete</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
+        <tbody id="donor-table">
+            <!-- DATA LOAD BY JAVASCRIPT -->
         </tbody>
     </table>
+
+    <script>
+        // Fake data — vì GitHub không chạy được PHP + Database
+        const donors = [
+            {id: 1, code: "D001", name: "Nguyen A", blood_type: "O+", phone_number: "0900000001", status: "Active"},
+            {id: 2, code: "D002", name: "Tran B", blood_type: "A-", phone_number: "0900000002", status: "Inactive"},
+            {id: 3, code: "D003", name: "Le C", blood_type: "B+", phone_number: "0900000003", status: "Active"}
+        ];
+
+        const tableBody = document.getElementById("donor-table");
+
+        donors.forEach((donor, index) => {
+            const row = `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${donor.code}</td>
+                    <td>${donor.name}</td>
+                    <td>${donor.blood_type}</td>
+                    <td>${donor.phone_number}</td>
+                    <td>${donor.status}</td>
+                    <td>
+                        <a href="#">Edit</a> |
+                        <a href="#" onclick="alert('Delete only works in PHP version')">Delete</a>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    </script>
+
 </body>
 </html>
 
