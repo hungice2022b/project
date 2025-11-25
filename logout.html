@@ -6,21 +6,20 @@
     <title>Logging out...</title>
 
     <script>
-        // XÓA COOKIE (chỉ xóa được cookie không có HttpOnly)
+        // Xóa cookie (chỉ cookie không HttpOnly)
         function deleteCookie(name) {
             document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
 
-        // Thực hiện logout trên client
         window.onload = function () {
-            // Xóa cookie có tên logged_user
+            // Xóa cookie lưu trạng thái login
             deleteCookie("logged_user");
 
             // Xóa localStorage và sessionStorage
             localStorage.clear();
             sessionStorage.clear();
 
-            // Hiển thị trạng thái
+            // Cập nhật trạng thái
             document.getElementById("status").innerText = "Đã đăng xuất! Đang chuyển hướng...";
 
             // Chuyển hướng về login.html sau 1 giây
@@ -29,37 +28,10 @@
             }, 1000);
         }
     </script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #f5f5f5;
-        }
-        #box {
-            background: white;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="box">
-        <h2 id="status">Đang đăng xuất...</h2>
-        <p>Nếu không tự chuyển hướng, bấm vào đây: <a href="login.html">Đăng nhập lại</a></p>
-    </div>
+    <h2 id="status">Đang đăng xuất...</h2>
+    <p>Nếu không tự chuyển hướng, bấm vào đây: <a href="login.html">Đăng nhập lại</a></p>
 </body>
 </html>
-
-
-
