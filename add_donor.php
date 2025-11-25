@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
+    header("Location: login.html");
     exit();
 }
-require_once 'config.php';
+require_once 'config.html';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $code = $_POST['code'];
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("INSERT INTO donors (code, name, blood_type, phone_number, status) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$code, $name, $blood_type, $phone_number, $status]);
 
-    header("Location: index.php");
+    header("Location: index.html");
     exit();
 }
 ?>
@@ -52,8 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit">Add Donor</button>
         </form>
-        <a href="index.php" class="back">← Back to list</a>
+        <a href="index.html" class="back">← Back to list</a>
     </div>
 </body>
 </html>
+
 
