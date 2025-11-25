@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
+    header("Location: login.html");
     exit();
 }
-require_once 'config.php';
+require_once 'config.html';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("UPDATE donors SET code = ?, name = ?, blood_type = ?, phone_number = ?, status = ? WHERE id = ?");
     $stmt->execute([$code, $name, $blood_type, $phone_number, $status, $id]);
 
-    header("Location: index.php");
+    header("Location: index.html");
 }
 
 $id = $_GET['id'];
@@ -59,3 +59,4 @@ $donor = $stmt->fetch();
     </form>
 </body>
 </html>
+
