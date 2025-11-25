@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once 'config.html';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -7,6 +7,7 @@ if (isset($_GET['id'])) {
     $stmt = $pdo->prepare("DELETE FROM donors WHERE id = ?");
     $stmt->execute([$id]);
 
-    header("Location: index.php");
+    header("Location: index.html");
 }
 ?>
+
