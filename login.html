@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user['name'];
         setcookie("logged_user", $user['name'], time() + 3600, "/");
-        header("Location: index.php");
+        header("Location: index.html");
         exit();
     } else {
         $error = "Incorrect email or password!";
@@ -56,10 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Login</button>
 
         <p class="swap-link">
-            No account? <a href="register.php">Register here</a>
+            No account? <a href="register.html">Register here</a>
         </p>
     </form>
 </div>
 
 </body>
 </html>
+
