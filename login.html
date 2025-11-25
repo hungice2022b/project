@@ -1,43 +1,29 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="auth-box">
-    <h2>Login</h2>
+<h2>Login</h2>
 
-    <?php if ($error): ?>
-        <p style="color: red; text-align:center;"><?= $error ?></p>
-    <?php endif; ?>
+<form method="POST" action="login.php">
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
 
-    <form method="POST">
-        <div class="input-group">
-            <label>Email</label>
-            <input type="email" name="email" required>
-        </div>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
 
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password" required>
-        </div>
+    <button type="submit">Login</button>
+</form>
 
-        <button type="submit">Login</button>
-
-        <p class="swap-link">
-            No account? <a href="register.html">Register here</a>
-        </p>
-    </form>
-</div>
+<p>
+    No account? <a href="register.html">Register here</a>
+</p>
 
 </body>
 </html>
-
 
 
